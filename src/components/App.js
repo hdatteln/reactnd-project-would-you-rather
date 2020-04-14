@@ -4,8 +4,13 @@ import NavBar from './NavBar';
 import HomeView from './HomeView';
 import LeaderBoardView from './LeaderBoardView';
 import NewQuestionView from './NewQuestionView';
+import { connect } from 'react-redux';
+import { handleInitialData } from '../actions/shared';
 
 class App extends Component {
+  componentDidMount () {
+    this.props.dispatch(handleInitialData());
+  }
 
   render () {
     return (
@@ -22,5 +27,10 @@ class App extends Component {
     );
   }
 }
+function mapStateToProps ({authedUser}) {
+  return {
+    loading: authedUser === null
+  };
+}
 
-export default App;
+export default connect(mapStateToProps)(App);
