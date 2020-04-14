@@ -1,10 +1,14 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom'
+import NavBar from './NavBar';
 
 class App extends Component {
 
   render () {
     return (
-      <div>Home</div>
+      <Router>
+        <NavBar/>
+      </Router>
     );
   }
 }
