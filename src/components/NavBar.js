@@ -6,7 +6,6 @@ class NavBar extends Component {
   render() {
 
     const { authedUser } = this.props;
-    console.log('aaa', authedUser);
     return (
       <nav className="teal darken-3">
         <ul>
@@ -27,14 +26,14 @@ class NavBar extends Component {
           </li>
           {authedUser !== null &&
             <li>
-              <NavLink to='/' activeClassName='active'>
+              <NavLink to='/signout' activeClassName='active'>
                 Sign Out
               </NavLink>
             </li>}
 
         </ul>
         {authedUser !== null &&
-        <div class="right loginid">
+        <div className="right loginid">
           Hello {authedUser}
         </div>}
       </nav>

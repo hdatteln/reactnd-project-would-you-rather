@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import { handleInitialData } from '../actions/shared';
 import SignInView from './SignInView';
 import PageNotFoundView from './PageNotFoundView';
+import Question from './Question';
 
 class App extends Component {
   componentDidMount() {
@@ -28,8 +29,10 @@ class App extends Component {
                 : <Fragment>
                 <Switch>
                     <Route exact path='/' component={HomeView} />
+                    <Route path='/questions/:questionId' component={Question} />
                     <Route path='/add' component={NewQuestionView} />
                     <Route path='/leaderboard' component={LeaderBoardView} />
+                    <Route path='/signout' component={SignInView}/>
                     <Route path='*' component={PageNotFoundView} />
                 </Switch>
                 </Fragment>
