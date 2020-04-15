@@ -50,7 +50,7 @@ class SignInView extends Component {
               <option key={user.id} value={user.id}>{user.name}</option>
             ))}
           </select>
-          <button type='submit'>Sign In</button>
+          <button type='submit' className='btn'>Sign In</button>
           </form>
         </div>
       </div>

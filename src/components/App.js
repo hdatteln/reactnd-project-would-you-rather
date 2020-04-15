@@ -19,7 +19,7 @@ class App extends Component {
     const { loading, authedUser } = this.props;
     return (
       <Router>
-        <NavBar/>
+        <NavBar authedUser={authedUser}/>
         {loading === false && (
           <div className="container valign-wrapper">
           <Route path='/' render={() =>

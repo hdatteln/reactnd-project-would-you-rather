@@ -4,7 +4,7 @@ class PageNotFoundView extends Component {
 
   render() {
     return (
-      <div>
+      <div className="row">
         <h3>Page Not Found!</h3>
       </div>
     )

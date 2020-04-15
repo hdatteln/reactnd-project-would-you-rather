@@ -7,26 +7,66 @@ class HomeView extends Component {
   componentDidMount () {
     M.AutoInit();
   }
+
   render() {
+    const { questions, users, authedUser } = this.props;
+    let questionsArr =  Object.values(questions).sort((a,b) => a.timestamp - b.timestamp);
+    const authedUserDetails = users[authedUser];
+    const authedUserAnswers = Object.keys(authedUserDetails.answers);
+
+    questionsArr = questionsArr.map((q) => {
+      return {
+        'id' : q.id,
+        'author_id' : users[q.author].id,
+        'author' : users[q.author].name,
+        'author_avatar': users[q.author].avatarURL,
+        'timestamp': q.timestamp,
+        'optionOne_votes': q.optionOne.votes,
+        'optionOne_text': q.optionOne.text,
+        'optionTwo_votes': q.optionTwo.votes,
+        'optionTwo_text': q.optionTwo.text,
+      }
+    });
+
+    function questionsReducer (acc, q) {
+      if (q.author_id !== authedUser) {
+        if (authedUserAnswers.includes(q.id)) {
+          acc['answered'].push(q);
+        } else {
+          acc['unanswered'].push(q);
+        }
+
+      }
+      return acc;
+    }
+
+    const aggregatedQuestions = questionsArr.reduce(questionsReducer, {'answered': [], 'unanswered': []});
+
     return (
       <div className="row">
+      <div className="row">
         <div className="col s12">
-          <ul className="tabs">
-            <li className="tab col s6"><a href="#unanswered">Unanswered Questions</a></li>
-            <li className="tab col s6"><a className="active" href="#answered">Answered Questions</a></li>
+          <ul className="tabs teal-text">
+            <li className="tab col s6 teal-text"><a href="#answered_no" className="active">Unanswered Questions</a></li>
+            <li className="tab col s6 teal-text"><a className="active" href="#answered_yes">Answered Questions</a></li>
           </ul>
         </div>
-        <div id="unanswered" className="col s12"><Question type='unanswered'/></div>
-        <div id="answered" className="col s12"><Question type='answered' /></div>
+      </div>
+      <div className="row">
+        <div id="answered_no" className="col s12"><Question questions={aggregatedQuestions.unanswered}/></div>
+        <div id="answered_yes" className="col s12"><Question questions={aggregatedQuestions.answered}/></div>
+      </div>
       </div>
     )
   }
 }
 
-function mapStateToProps({ users }) {
+function mapStateToProps({ authedUser, questions, users }) {
   return {
-    users: Object.values(users).sort((a,b) => a.name.localeCompare(b.name))
-  }
+    authedUser,
+    questions,
+    users,
+  };
 }
 
 export default connect(mapStateToProps)(HomeView);
