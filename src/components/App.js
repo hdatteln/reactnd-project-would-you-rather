@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { handleInitialData } from '../actions/shared';
 import SignInView from './SignInView';
 import PageNotFoundView from './PageNotFoundView';
-import Question from './Question';
+import QuestionDetails from './QuestionDetails';
 
 class App extends Component {
   componentDidMount() {
@@ -17,10 +17,15 @@ class App extends Component {
   }
 
   render () {
-    const { loading, authedUser } = this.props;
+    const { users, loading, authedUser } = this.props;
+    let userName = null;
+    if (authedUser !== null) {
+      userName = users[authedUser].name;
+    }
+    console.log('AU', authedUser);
     return (
       <Router>
-        <NavBar authedUser={authedUser}/>
+        <NavBar authedUserName={userName}/>
         {loading === false && (
           <div className="container valign-wrapper">
           <Route path='/' render={() =>
@@ -29,10 +34,10 @@ class App extends Component {
                 : <Fragment>
                 <Switch>
                     <Route exact path='/' component={HomeView} />
-                    <Route path='/questions/:questionId' component={Question} />
                     <Route path='/add' component={NewQuestionView} />
                     <Route path='/leaderboard' component={LeaderBoardView} />
                     <Route path='/signout' component={SignInView}/>
+                  <Route path='/questions/:id' component={QuestionDetails} />
                     <Route path='*' component={PageNotFoundView} />
                 </Switch>
                 </Fragment>
@@ -46,6 +51,7 @@ class App extends Component {
 }
 function mapStateToProps ({users, authedUser}) {
   return {
+    users,
     loading: users === null || Object.keys(users).length < 1,
     authedUser
   };

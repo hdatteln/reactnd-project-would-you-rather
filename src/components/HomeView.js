@@ -13,12 +13,11 @@ class HomeView extends Component {
     let questionsArr =  Object.values(questions).sort((a,b) => a.timestamp - b.timestamp);
     const authedUserDetails = users[authedUser];
     const authedUserAnswers = Object.keys(authedUserDetails.answers);
-
     questionsArr = questionsArr.map((q) => {
       return {
         'id' : q.id,
-        'author_id' : users[q.author].id,
-        'author' : users[q.author].name,
+        'author_id' : q.author,
+        'author_name' : users[q.author].name,
         'author_avatar': users[q.author].avatarURL,
         'timestamp': q.timestamp,
         'optionOne_votes': q.optionOne.votes,
@@ -29,14 +28,12 @@ class HomeView extends Component {
     });
 
     function questionsReducer (acc, q) {
-      if (q.author_id !== authedUser) {
         if (authedUserAnswers.includes(q.id)) {
           acc['answered'].push(q);
         } else {
           acc['unanswered'].push(q);
         }
 
-      }
       return acc;
     }
 
@@ -53,8 +50,21 @@ class HomeView extends Component {
         </div>
       </div>
       <div className="row">
-        <div id="answered_no" className="col s12"><Question questions={aggregatedQuestions.unanswered}/></div>
-        <div id="answered_yes" className="col s12"><Question questions={aggregatedQuestions.answered}/></div>
+        <div id="answered_no" className="col s12">
+          <div className="row">
+            { aggregatedQuestions.unanswered.map((q) => (
+              <Question key={q.id} question={q}/>
+            ))}
+          </div>
+
+        </div>
+        <div id="answered_yes" className="col s12">
+          <div className="row">
+            { aggregatedQuestions.answered.map((q) => (
+              <Question key={q.id} question={q}/>
+            ))}
+          </div>
+        </div>
       </div>
       </div>
     )

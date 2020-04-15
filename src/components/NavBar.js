@@ -5,7 +5,7 @@ import authedUser from '../reducers/authedUser';
 class NavBar extends Component {
   render() {
 
-    const { authedUser } = this.props;
+    const { authedUserName } = this.props;
     return (
       <nav className="teal darken-3">
         <ul>
@@ -24,7 +24,7 @@ class NavBar extends Component {
               Leaderboard
             </NavLink>
           </li>
-          {authedUser !== null &&
+          {authedUserName !== null &&
             <li>
               <NavLink to='/signout' activeClassName='active'>
                 Sign Out
@@ -32,9 +32,9 @@ class NavBar extends Component {
             </li>}
 
         </ul>
-        {authedUser !== null &&
+        {authedUserName !== null &&
         <div className="right loginid">
-          Hello {authedUser}
+          Hello {authedUserName}
         </div>}
       </nav>
     )
