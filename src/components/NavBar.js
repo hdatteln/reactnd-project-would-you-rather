@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavLink} from 'react-router-dom';
+import authedUser from '../reducers/authedUser';
 
 export default function NavBar() {
   return (
@@ -20,7 +21,16 @@ export default function NavBar() {
             Leaderboard
           </NavLink>
         </li>
+        {authedUser !== null && (
+          <li>
+            <NavLink to='/' activeClassName='active'>
+              Sign Out
+            </NavLink>
+          </li>
+        )}
+
       </ul>
     </nav>
   )
 }
+
