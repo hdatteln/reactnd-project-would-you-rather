@@ -9,11 +9,11 @@ export function receiveUsers (users) {
 }
 
 
-export function addUserQuestionAnswer(authedUser, questionId, selectedOption) {
+export function addUserQuestionAnswer(authedUser, questionId, selectedAnswer) {
   return {
     type: ADD_USER_QUESTION_ANSWER,
     authedUser,
     questionId,
-    selectedOption
+    selectedAnswer
   }
 }

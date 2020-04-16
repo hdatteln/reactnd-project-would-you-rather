@@ -53,7 +53,7 @@ class HomeView extends Component {
         <div id="answered_no" className="col s12">
           <div className="row">
             { aggregatedQuestions.unanswered.map((q) => (
-              <Question key={q.id} question={q}/>
+              <Question task='Poll' key={q.id} question={q}/>
             ))}
           </div>
 
@@ -61,7 +61,7 @@ class HomeView extends Component {
         <div id="answered_yes" className="col s12">
           <div className="row">
             { aggregatedQuestions.answered.map((q) => (
-              <Question key={q.id} question={q}/>
+              <Question task='View Results' key={q.id} question={q}/>
             ))}
           </div>
         </div>
