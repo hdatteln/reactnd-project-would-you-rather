@@ -1,19 +1,40 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { handleAnswerQuestion } from '../actions/shared';
 
 class Question extends Component {
 
+  state = {
+    selectedAnswer: ''
+  };
+
+  handlePollChange = (e) => {
+    const selectedAnswer = e.target.value;
+
+    this.setState(() => ({
+      selectedAnswer
+    }));
+  };
+
   handlePollSubmit = (e) => {
     e.preventDefault();
-    console.log('submitted')
+
+    const { selectedAnswer } = this.state;
+    const { id } = this.props.match.params;
+    const { dispatch, authedUser,  } = this.props;
+
+    //questionId, selectedOption, authedUser
+    dispatch(handleAnswerQuestion(id, selectedAnswer, authedUser));
+    this.setState(() => ({
+      selectedAnswer: ''
+    }))
+
   };
 
   toQuestion = (e, id) => {
     e.preventDefault();
-
     this.props.history.push(`/questions/${id}`)
-
   };
 
   render() {
@@ -32,20 +53,31 @@ class Question extends Component {
                   <strong>Would you rather...</strong>
                   {action === 'poll'
                     ? <div>
-                        <form onChange={this.handlePollSubmit}>
+                        <form onSubmit={this.handlePollSubmit}>
                           <p>
                             <label>
-                              <input name="group1" type="radio" defaultChecked />
+                              <input
+                                className="with-gap"
+                                name="group1"
+                                type="radio"
+                                onChange={this.handlePollChange}
+                                value='optionOne'
+                              />
                               <span>{question.optionOne_text} </span>
                             </label>
                           </p>
                           <p>
                             <label>
-                              <input name="group1" type="radio" />
+                              <input
+                                className="with-gap"
+                                name="group1"
+                                type="radio"
+                                onChange={this.handlePollChange}
+                                value='optionTwo'/>
                               <span>{question.optionTwo_text}</span>
                             </label>
                           </p>
-                          <button className='btn'> Submit </button>
+                          <button type="submit" className="btn"> Submit </button>
                         </form>
                       </div>
                     : <div>
