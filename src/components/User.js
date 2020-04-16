@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { handleAnswerQuestion } from '../actions/shared';
 
 class User extends Component {
-
 
   render () {
     const {user} = this.props;
@@ -31,7 +27,8 @@ class User extends Component {
                 <h6>SCORE</h6>
               </div>
               <div className="row">
-                <div className='score teal-text text-darken-2'>{user.questions.length  + Object.keys(user.answers).length}</div>
+                <div
+                  className='score teal-text text-darken-2'>{user.questions.length + Object.keys(user.answers).length}</div>
               </div>
             </div>
           </div>
@@ -43,12 +40,4 @@ class User extends Component {
   }
 }
 
-function mapStateToProps ({authedUser, questions, users}) {
-  return {
-    authedUser,
-    questions,
-    users
-  };
-}
-
-export default withRouter(connect(mapStateToProps)(User));
+export default User;
