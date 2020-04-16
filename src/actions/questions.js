@@ -3,6 +3,7 @@ import { hideLoading, showLoading } from 'react-redux-loading';
 
 export const ADD_QUESTION = 'ADD_QUESTION';
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';
+export const ADD_QUESTION_ANSWER = 'ADD_QUESTION_ANSWER';
 
 export function receiveQuestions (questions) {
   return {
@@ -29,3 +30,13 @@ export function handleAddQuestion (question) {
 
   };
 }
+
+export function addQuestionAnswer(authedUser, questionId, selectedOption) {
+  return {
+    type: ADD_QUESTION_ANSWER,
+    authedUser,
+    questionId,
+    selectedOption
+  }
+}
+
