@@ -27,10 +27,8 @@ class LeaderBoardView extends Component {
   }
 }
 
-function mapStateToProps({ authedUser, questions, users }) {
+function mapStateToProps({ users }) {
   return {
-    authedUser,
-    questions,
     users,
   };
 }
