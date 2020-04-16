@@ -31,12 +31,12 @@ export function handleAddQuestion (question) {
   };
 }
 
-export function addQuestionAnswer(authedUser, questionId, selectedOption) {
+export function addQuestionAnswer(authedUser, questionId, selectedAnswer) {
   return {
     type: ADD_QUESTION_ANSWER,
     authedUser,
     questionId,
-    selectedOption
+    selectedAnswer
   }
 }
 

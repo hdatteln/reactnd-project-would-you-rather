@@ -17,7 +17,6 @@ export function handleInitialData () {
 export function handleAnswerQuestion (questionId, selectedOption, authedUser) {
   return (dispatch, getState) => {
     dispatch(showLoading());
-    console.log('ths answer', selectedOption)
 
     saveQuestionAnswer({
       authedUser,

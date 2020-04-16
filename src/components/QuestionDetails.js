@@ -20,7 +20,13 @@ class QuestionDetails extends Component {
 
     return (
       <div className="row">
-        <Question  question={q} action='poll'/>
+        <div className="row">
+          <div className="col s12">
+            <div className="row">
+            <Question  question={q} action='poll'/>
+            </div>
+          </div>
+        </div>
       </div>
     )
   }
