@@ -39,3 +39,7 @@
 .votesWinner {
     color: forestgreen;
 }
+
+.score {
+    font-size: x-large;
+}

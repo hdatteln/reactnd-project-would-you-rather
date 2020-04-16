@@ -52,17 +52,29 @@ class HomeView extends Component {
       <div className="row">
         <div id="answered_no" className="col s12">
           <div className="row">
-            { aggregatedQuestions.unanswered.map((q) => (
-              <Question task='Poll' key={q.id} question={q}/>
-            ))}
+            { aggregatedQuestions.unanswered.length > 0
+              ? aggregatedQuestions.unanswered.map((q) => (
+                  <Question task='Poll' key={q.id} question={q}/>
+                ))
+              : <div>
+                  <h5>You have answered all questions!</h5>
+                  <p>Please check back in for new questions later.</p>
+                </div>
+            }
           </div>
 
         </div>
         <div id="answered_yes" className="col s12">
           <div className="row">
-            { aggregatedQuestions.answered.map((q) => (
+            { aggregatedQuestions.answered.length > 0
+              ? aggregatedQuestions.answered.map((q) => (
               <Question task='View Results' key={q.id} question={q}/>
-            ))}
+              ))
+              : <div>
+                <h5>You have answered no questions yet.</h5>
+                <p>Click on the 'unanswered questions' tab to give it a go!</p>
+              </div>
+            }
           </div>
         </div>
       </div>

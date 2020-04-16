@@ -22,6 +22,7 @@ class QuestionDetails extends Component {
       <div className="row">
         <div className="row">
           <div className="col s12">
+            <div className="row"></div>
             <div className="row">
             <Question  question={q} action='poll'/>
             </div>
