@@ -14,7 +14,7 @@ This application was developed using Node.js, version v13.11.0.
 Just go to the [official Node.js website](https://nodejs.org/) and download the installer.
 Also, be sure to have `git` available in your PATH, `npm` might need it (You can find git [here](https://git-scm.com/)).
 
-### Bookshelf Application
+### 'Would you Rather' Application
 * Clone or download this project: `git clone https://github.com/hdatteln/reactnd-project-would-you-rather.git` 
 * In the project's root directory, run `npm install` to install the required packages
 
