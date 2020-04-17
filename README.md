@@ -1,20 +1,70 @@
 # Would You Rather Project
 
-This is the starter code for the final assessment project for Udacity's React & Redux course.
+The 'Would you rather...' application was developed as part of the Udacity React Nanodegree Program.
 
-The `_DATA.js` file represents a fake database and methods that let you access the data. The only thing you need to edit in the ` _DATA.js` file is the value of `avatarURL`. Each user should have an avatar, so you’ll need to add the path to each user’s avatar.
+The application is a little game where users can anser 'Would you rather...'-type questions, see how their answers compare to other users, and also create new questions.
 
-Using the provided starter code, you'll build a React/Redux front end for the application. We recommend using the [Create React App](https://github.com/facebook/create-react-app) to bootstrap the project.
+Currently, there is no database at the backend of this application however.
+All the data comes from the `src/utils/_DATA.js` file, which represents a fake database.
 
-## Data
 
-There are two types of objects stored in our database:
+## Installing the App
+### Node and NPM
+This application was developed using Node.js, version v13.11.0.  
+Just go to the [official Node.js website](https://nodejs.org/) and download the installer.
+Also, be sure to have `git` available in your PATH, `npm` might need it (You can find git [here](https://git-scm.com/)).
+
+### Bookshelf Application
+* Clone or download this project: `git clone https://github.com/hdatteln/reactnd-project-would-you-rather.git` 
+* In the project's root directory, run `npm install` to install the required packages
+
+
+## Running the App
+* In the project's root directory, run `npm start` to start the application.
+* A new browser window should automatically open and display the app. If it doesn't, navigate to http://localhost:3000/ in your browser.
+
+
+## Using the App
+### Sign in Page (http://localhost:3000/)
+This is a mocked sign-up page; It does not provide a security layer for the app, but it currently allows you to select from a list of users so you can use the app as one of those users.
+
+![](public/wyr_signup.png)  
+
+### Home Dashboard (http://localhost:3000/)
+The home dashboard shows you a list of all available questions, grouped in two tabs:
+* Unanswered questions - Displayed by default. These are questions that the signed-in user has not answered yet.
+* Answered questions -  These are questions that the signed-in user has already answered.
+
+Each question has a button that allows you to:
+a) answer an unanswered question, OR  
+b) see the details of an already answered question
+
+![](public/wyr_home1.png)  
+
+![](public/wyr_home2.png)  
+
+![](public/wyr_home3.png)  
+
+
+### New Question (http://localhost:3000/add)
+Click 'New Question' in the navigation bar to add a new question.  
+Enter the two different options you want to ask about, and click 'Submit'.
+
+![](public/wyr_new.png)  
+
+### Leaderboard (http://localhost:3000/leaderboard)
+The leaderboard shows you a ranking of all users;
+Users can gain ranking points by submitting or answering questions
+
+![](public/wyr_leaderboard.png)  
+
+## Data Details
+There are two types of objects stored in our fake database:
 
 * Users
 * Questions
 
 ### Users
-
 Users include:
 
 | Attribute    | Type             | Description           |
@@ -26,7 +76,6 @@ Users include:
 | answers      | Object         |  The object's keys are the ids of each question this user answered. The value of each key is the answer the user selected. It can be either `'optionOne'` or `'optionTwo'` since each question has two options.
 
 ### Questions
-
 Questions include:
 
 | Attribute | Type | Description |
@@ -38,7 +87,6 @@ Questions include:
 | optionTwo | Object | The second voting option|
 
 ### Voting Options
-
 Voting options are attached to questions. They include:
 
 | Attribute | Type | Description |
@@ -46,55 +94,5 @@ Voting options are attached to questions. They include:
 | votes             | Array | A list that contains the id of each user who voted for that option|
 | text                | String | The text of the option |
 
-Your code will talk to the database via 4 methods:
 
-* `_getUsers()`
-* `_getQuestions()`
-* `_saveQuestion(question)`
-* `_saveQuestionAnswer(object)`
 
-1) `_getUsers()` Method
-
-*Description*: Get all of the existing users from the database.  
-*Return Value*: Object where the key is the user’s id and the value is the user object.
-
-2) `_getQuestions()` Method
-
-*Description*: Get all of the existing questions from the database.  
-*Return Value*: Object where the key is the question’s id and the value is the question object.
-
-3) `_saveQuestion(question)` Method
-
-*Description*: Save the polling question in the database.  
-*Parameters*:  Object that includes the following properties: `author`, `optionOneText`, and `optionTwoText`. More details about these properties:
-
-| Attribute | Type | Description |
-|-----------------|------------------|-------------------|
-| author | String | The id of the user who posted the question|
-| optionOneText| String | The text of the first option |
-| optionTwoText | String | The text of the second option |
-
-*Return Value*:  An object that has the following properties: `id`, `author`, `optionOne`, `optionTwo`, `timestamp`. More details about these properties:
-
-| Attribute | Type | Description |
-|-----------------|------------------|-------------------|
-| id | String | The id of the question that was posted|
-| author | String | The id of the user who posted the question|
-| optionOne | Object | The object has a text property and a votes property, which stores an array of the ids of the users who voted for that option|
-| optionTwo | Object | The object has a text property and a votes property, which stores an array of the ids of the users who voted for that option|
-|timestamp|String | The time when the question was created|
-
-4) `_saveQuestionAnswer(object)` Method
-
-*Description*: Save the answer to a particular polling question in the database.
-*Parameters*: Object that contains the following properties: `authedUser`, `qid`, and `answer`. More details about these properties:
-
-| Attribute | Type | Description |
-|-----------------|------------------|-------------------|
-| authedUser | String | The id of the user who answered the question|
-| qid | String | The id of the question that was answered|
-| answer | String | The option the user selected. The value should be either `"optionOne"` or `"optionTwo"`|
-
-## Contributing
-
-This repository is the starter code for *all* Udacity students. Therefore, we most likely will not accept pull requests. For details, check out [CONTRIBUTING.md](https://github.com/udacity/reactnd-project-would-you-rather-starter/blob/master/CONTRIBUTING.md).
