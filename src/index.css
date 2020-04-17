@@ -33,13 +33,18 @@
     min-width: 500px;
 }
 
-.votesResult, .votesWinner {
-    margin: 10px 20px;
-}
 .votesWinner {
-    color: forestgreen;
+    color: #00bfa5;
+}
+
+i.icon-yellow {
+    color: #ffd600;
 }
 
 .score {
     font-size: x-large;
+}
+
+.voteResultDetails {
+    padding: 10px;
 }

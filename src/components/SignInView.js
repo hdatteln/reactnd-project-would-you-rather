@@ -29,7 +29,6 @@ class SignInView extends Component {
   };
 
 
-
   handleSubmit = (e) => {
     e.preventDefault();
     const {selectedUser} = this.state;
@@ -56,18 +55,20 @@ class SignInView extends Component {
     } else {
       return (
         <div className="row">
-          <h3>Sign In</h3>
-          <p>Please select a user from the drop down list in order to sign in.</p>
-          <div className="input-field col">
-            <form action="" onSubmit={this.handleSubmit}>
-              <select ref="dropdown" defaultValue="0" onChange={this.handleChange}>
-                <option value="0" disabled>Choose your option</option>
-                {users.map((user) => (
-                  <option key={user.id} value={user.id}>{user.name}</option>
-                ))}
-              </select>
-              <button type='submit' className='btn'>Sign In</button>
-            </form>
+          <div className="col s12">
+            <h4>Sign In</h4>
+            <p>Please select a user from the drop down list in order to sign in.</p>
+            <div className="input-field col s12">
+              <form action="" onSubmit={this.handleSubmit}>
+                <select ref="dropdown" defaultValue="0" onChange={this.handleChange}>
+                  <option value="0" disabled>Choose your option</option>
+                  {users.map((user) => (
+                    <option key={user.id} value={user.id}>{user.name}</option>
+                  ))}
+                </select>
+                <button type='submit' className='btn'>Sign In</button>
+              </form>
+            </div>
           </div>
         </div>
       );

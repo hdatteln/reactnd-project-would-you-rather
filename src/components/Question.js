@@ -42,13 +42,13 @@ class Question extends Component {
   render () {
     const {task, question, action, authedUser, users} = this.props;
     const authedUserDetails = users[authedUser];
-    let answered = authedUserDetails.answers[question.id] ? true: false;
+    let answered = authedUserDetails.answers[question.id] ? true : false;
     let totalVotes, opt1votes, opt2votes = 0;
     let option1Style, option2Style = 'votesResult';
     let opt1yourvote, opt2yourvote = 'hide';
     if (question.optionOne) {
-      opt1yourvote = question.optionOne['votes'].includes(authedUser) ? 'show orange-text' : 'hide';
-      opt2yourvote = question.optionTwo['votes'].includes(authedUser) ? 'show orange-text' : 'hide';
+      opt1yourvote = question.optionOne['votes'].includes(authedUser) ? 'show orange-text text-accent-4' : 'hide';
+      opt2yourvote = question.optionTwo['votes'].includes(authedUser) ? 'show orange-text text-accent-4' : 'hide';
       opt1votes = question.optionOne['votes'].length;
       opt2votes = question.optionTwo['votes'].length;
       totalVotes = opt1votes + opt2votes;
@@ -63,21 +63,30 @@ class Question extends Component {
             <div className="col"><h6><strong>{question.author_name}</strong> asks:</h6></div>
           </div>
           <div className="row s12">
-            <div className="col card-image s4"><img src={question.author_avatar} alt={question.author_name}/></div>
+            <div className="col card-image s4 center-align"><img src={question.author_avatar} alt={question.author_name}/></div>
             <div className="col s8">
               {action === 'poll'
                 ? <div>
                   {answered === true
                     ? <div>
                       <h6>Results:</h6>
-                      <div className={option1Style}>
-                        <strong>{question.optionOne_text}?</strong>
-                        <div>{opt1votes} of {totalVotes} out of votes &nbsp;<span id="opt1v" className={opt1yourvote}>Your Vote!</span>
+                      <div>
+                        {option1Style ==='votesWinner'
+                          ? <i class="material-icons icon-yellow">star_border</i>
+                          : ""
+                        }<strong className={option1Style}>Would you rather... <b>{question.optionOne_text}</b>?</strong>
+                        <div className='voteResultDetails'>
+                          {opt1votes} of {totalVotes} out of votes &nbsp;<span id="opt1v" className={opt1yourvote}>Your Vote!</span>
                         </div>
                       </div>
-                      <div className={option2Style}>
-                        <strong>{question.optionTwo_text}?</strong>
-                        <div>{opt2votes} of {totalVotes} out of votes &nbsp;<span id="opt2v" className={opt2yourvote}>Your Vote!</span>
+                      <hr/>
+                      <div>
+                        {option2Style ==='votesWinner'
+                          ? <i class="material-icons icon-yellow">star_border</i>
+                          : ""
+                        }<strong className={option2Style}>Would you rather... <b>{question.optionTwo_text}</b>?</strong>
+                        <div className='voteResultDetails'>
+                          {opt2votes} of {totalVotes} out of votes &nbsp;<span id="opt2v" className={opt2yourvote}>Your Vote!</span>
                         </div>
                       </div>
 
