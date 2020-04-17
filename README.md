@@ -50,7 +50,7 @@ b) see the details of an already answered question
 Click 'New Question' in the navigation bar to add a new question.  
 Enter the two different options you want to ask about, and click 'Submit'.
 
-![](public/wyr_new.png)  
+![](public/wyr_home3.png)  
 
 ### Leaderboard (http://localhost:3000/leaderboard)
 The leaderboard shows you a ranking of all users;

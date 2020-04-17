@@ -63,7 +63,8 @@ class Question extends Component {
             <div className="col"><h6><strong>{question.author_name}</strong> asks:</h6></div>
           </div>
           <div className="row s12">
-            <div className="col card-image s4 center-align"><img src={question.author_avatar} alt={question.author_name}/></div>
+            <div className="col card-image s4 center-align"><img src={question.author_avatar}
+                                                                 alt={question.author_name}/></div>
             <div className="col s8">
               {action === 'poll'
                 ? <div>
@@ -71,9 +72,9 @@ class Question extends Component {
                     ? <div>
                       <h6>Results:</h6>
                       <div>
-                        {option1Style ==='votesWinner'
-                          ? <i class="material-icons icon-yellow">star_border</i>
-                          : ""
+                        {option1Style === 'votesWinner'
+                          ? <i className="material-icons icon-yellow">star_border</i>
+                          : ''
                         }<strong className={option1Style}>Would you rather... <b>{question.optionOne_text}</b>?</strong>
                         <div className='voteResultDetails'>
                           {opt1votes} of {totalVotes} out of votes &nbsp;<span id="opt1v" className={opt1yourvote}>Your Vote!</span>
@@ -81,9 +82,9 @@ class Question extends Component {
                       </div>
                       <hr/>
                       <div>
-                        {option2Style ==='votesWinner'
-                          ? <i class="material-icons icon-yellow">star_border</i>
-                          : ""
+                        {option2Style === 'votesWinner'
+                          ? <i className="material-icons icon-yellow">star_border</i>
+                          : ''
                         }<strong className={option2Style}>Would you rather... <b>{question.optionTwo_text}</b>?</strong>
                         <div className='voteResultDetails'>
                           {opt2votes} of {totalVotes} out of votes &nbsp;<span id="opt2v" className={opt2yourvote}>Your Vote!</span>

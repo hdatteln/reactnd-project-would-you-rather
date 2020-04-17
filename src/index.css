@@ -3,22 +3,22 @@
     border-radius: 0 0 2px 2px;
 }
 
-.tabs .tab a{
-    color:#000;
+.tabs .tab a {
+    color: #000;
 }
 
 .tabs .tab a:hover {
-    background-color:#eee;
-    color:#000;
+    background-color: #eee;
+    color: #000;
 }
 
 .tabs .tab a.active {
-    background-color:#e0f2f1;
-    color:#000;
+    background-color: #e0f2f1;
+    color: #000;
 }
 
 .tabs .indicator {
-    background-color:#00695c;
+    background-color: #00695c;
 }
 
 .btnwrap {

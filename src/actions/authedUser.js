@@ -8,8 +8,8 @@ export function setAuthedUser (uid) {
   };
 }
 
-export function unsetAuthedUser() {
+export function unsetAuthedUser () {
   return {
-    type: UNSET_AUTHED_USER,
+    type: UNSET_AUTHED_USER
   };
 }
