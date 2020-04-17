@@ -43,7 +43,7 @@ class Question extends Component {
     const {task, question, action, authedUser, users} = this.props;
     const authedUserDetails = users[authedUser];
     let answered = authedUserDetails.answers[question.id] ? true : false;
-    let totalVotes, opt1votes, opt2votes = 0;
+    let totalVotes, opt1votes, opt2votes, opt1votesPercent, opt2votesPercent = 0;
     let option1Style, option2Style = 'votesResult';
     let opt1yourvote, opt2yourvote = 'hide';
     if (question.optionOne) {
@@ -52,6 +52,8 @@ class Question extends Component {
       opt1votes = question.optionOne['votes'].length;
       opt2votes = question.optionTwo['votes'].length;
       totalVotes = opt1votes + opt2votes;
+      opt1votesPercent = opt1votes / totalVotes * 100;
+      opt2votesPercent = opt2votes / totalVotes * 100;
       option1Style = opt1votes > opt2votes ? 'votesWinner' : 'votesResult';
       option2Style = opt2votes > opt1votes ? 'votesWinner' : 'votesResult';
     }
@@ -77,7 +79,7 @@ class Question extends Component {
                           : ''
                         }<strong className={option1Style}>Would you rather... <b>{question.optionOne_text}</b>?</strong>
                         <div className='voteResultDetails'>
-                          {opt1votes} of {totalVotes} out of votes &nbsp;<span id="opt1v" className={opt1yourvote}>Your Vote!</span>
+                          {opt1votes} of {totalVotes} out of votes ({opt1votesPercent}%) &nbsp;<span id="opt1v" className={opt1yourvote}>Your Vote!</span>
                         </div>
                       </div>
                       <hr/>
@@ -87,7 +89,7 @@ class Question extends Component {
                           : ''
                         }<strong className={option2Style}>Would you rather... <b>{question.optionTwo_text}</b>?</strong>
                         <div className='voteResultDetails'>
-                          {opt2votes} of {totalVotes} out of votes &nbsp;<span id="opt2v" className={opt2yourvote}>Your Vote!</span>
+                          {opt2votes} of {totalVotes} out of votes ({opt2votesPercent}%) &nbsp;<span id="opt2v" className={opt2yourvote}>Your Vote!</span>
                         </div>
                       </div>
 
