@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { handleAddQuestion } from '../actions/questions';
 import { withRouter } from 'react-router-dom';
@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 class NewQuestionView extends Component {
   state = {
     newOptionOne: '',
-    newOptionTwo: '',
+    newOptionTwo: ''
   };
   handleQuestionChange = (e) => {
     e.persist();
@@ -34,12 +34,13 @@ class NewQuestionView extends Component {
       }));
       this.setState(() => ({
         newOptionOne: '',
-        newOptionTwo: '',
+        newOptionTwo: ''
       }));
     }
     this.props.history.push('/');
   };
-  render() {
+
+  render () {
 
     return (
       <div className="row">
@@ -72,7 +73,7 @@ class NewQuestionView extends Component {
                         value={this.state.newOptionTwo}
                       />
                       <div className="btnwrap">
-                        <button type='submit' className='btn'> Submit </button>
+                        <button type='submit' className='btn'> Submit</button>
                       </div>
                     </form>
                   </div>
@@ -82,15 +83,13 @@ class NewQuestionView extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-function mapStateToProps({ authedUser, questions, users }) {
+function mapStateToProps ({authedUser}) {
   return {
-    authedUser,
-    questions,
-    users,
+    authedUser
   };
 }
 

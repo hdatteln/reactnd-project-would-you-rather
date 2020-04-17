@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import M from 'materialize-css';
 import Question from './Question';
 import { connect } from 'react-redux';
@@ -8,10 +8,10 @@ class QuestionDetails extends Component {
     M.AutoInit();
   }
 
-  render() {
-    const { questions, users } = this.props;
-    const { id } = this.props.match.params;
-    const q = { ...questions[id] };
+  render () {
+    const {questions, users} = this.props;
+    const {id} = this.props.match.params;
+    const q = {...questions[id]};
     const author = users[q.author];
     q.optionOne_text = q.optionOne.text;
     q.optionTwo_text = q.optionTwo.text;
@@ -24,19 +24,19 @@ class QuestionDetails extends Component {
           <div className="col s12">
             <div className="row"></div>
             <div className="row">
-            <Question  question={q} action='poll'/>
+              <Question question={q} action='poll'/>
             </div>
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-function mapStateToProps({ questions, users }) {
+function mapStateToProps ({questions, users}) {
   return {
     questions,
-    users,
+    users
   };
 }
 

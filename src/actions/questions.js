@@ -1,6 +1,5 @@
 import { saveQuestion } from '../utils/api';
-import { hideLoading, showLoading } from 'react-redux-loading';
-import { addQuestionToUser } from '../actions/users'
+import { addQuestionToUser } from '../actions/users';
 
 export const ADD_QUESTION = 'ADD_QUESTION';
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';
@@ -22,25 +21,22 @@ function addQuestion (question) {
 
 export function handleAddQuestion (question) {
   return (dispatch) => {
-    dispatch(showLoading());
-    console.log('hq', question);
     return saveQuestion(
       question
     )
       .then((question) => {
         dispatch(addQuestionToUser(question));
         dispatch(addQuestion(question));
-      })
-      .then(() => dispatch(hideLoading()));
-}
+      });
+  };
 }
 
-export function addQuestionAnswer(authedUser, questionId, selectedAnswer) {
+export function addQuestionAnswer (authedUser, questionId, selectedAnswer) {
   return {
     type: ADD_QUESTION_ANSWER,
     authedUser,
     questionId,
     selectedAnswer
-  }
+  };
 }
 

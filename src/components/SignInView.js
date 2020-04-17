@@ -8,7 +8,7 @@ class SignInView extends Component {
   componentDidMount () {
     M.AutoInit();
 
-    const { authedUser } = this.props;
+    const {authedUser} = this.props;
     if (authedUser) {
       this.handleSignout();
     }
@@ -27,7 +27,6 @@ class SignInView extends Component {
       };
     });
   };
-
 
   handleSubmit = (e) => {
     e.preventDefault();

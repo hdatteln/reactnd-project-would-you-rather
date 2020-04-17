@@ -1,11 +1,10 @@
-import React, { Component } from 'react'
-import { NavLink, Route } from 'react-router-dom';
-import authedUser from '../reducers/authedUser';
+import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 
 class NavBar extends Component {
-  render() {
+  render () {
 
-    const { authedUserName } = this.props;
+    const {authedUserName} = this.props;
     return (
       <nav className="teal darken-3">
         <ul>
@@ -25,11 +24,11 @@ class NavBar extends Component {
             </NavLink>
           </li>
           {authedUserName !== null &&
-            <li>
-              <NavLink to='/signout' activeClassName='active'>
-                Sign Out
-              </NavLink>
-            </li>}
+          <li>
+            <NavLink to='/signout' activeClassName='active'>
+              Sign Out
+            </NavLink>
+          </li>}
 
         </ul>
         {authedUserName !== null &&
@@ -37,7 +36,7 @@ class NavBar extends Component {
           Hello {authedUserName}
         </div>}
       </nav>
-    )
+    );
   }
 }
 
