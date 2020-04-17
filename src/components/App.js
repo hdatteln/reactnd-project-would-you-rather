@@ -9,9 +9,11 @@ import { handleInitialData } from '../actions/shared';
 import SignInView from './SignInView';
 import PageNotFoundView from './PageNotFoundView';
 import QuestionDetails from './QuestionDetails';
+import M from 'materialize-css';
 
 class App extends Component {
   componentDidMount () {
+    M.AutoInit();
     this.props.dispatch(handleInitialData());
   }
 
@@ -29,7 +31,7 @@ class App extends Component {
           <div className="container valign-wrapper">
             <Route path='/' render={() =>
               (authedUser === null
-                  ? <Route component={SignInView}/>
+                  ? <Fragment><Route path='*' component={SignInView}/></Fragment>
                   : <Fragment>
                     <Switch>
                       <Route exact path='/' component={HomeView}/>

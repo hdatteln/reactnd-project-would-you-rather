@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import M from 'materialize-css';
 import Question from './Question';
 import { connect } from 'react-redux';
+import PageNotFoundView from './PageNotFoundView';
 
 class QuestionDetails extends Component {
   componentDidMount () {
@@ -12,6 +13,12 @@ class QuestionDetails extends Component {
     const {questions, users} = this.props;
     const {id} = this.props.match.params;
     const q = {...questions[id]};
+    if (Object.keys(q).length === 0) {
+      // question does not exist. Redirect to 'page not found'
+      return (
+        <PageNotFoundView />
+      )
+    }
     const author = users[q.author];
     q.optionOne_text = q.optionOne.text;
     q.optionTwo_text = q.optionTwo.text;

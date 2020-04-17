@@ -10,7 +10,7 @@ class HomeView extends Component {
 
   render () {
     const {questions, users, authedUser} = this.props;
-    let questionsArr = Object.values(questions).sort((a, b) => a.timestamp - b.timestamp);
+    let questionsArr = Object.values(questions).sort((a, b) => b.timestamp - a.timestamp);
     const authedUserDetails = users[authedUser];
     const authedUserAnswers = Object.keys(authedUserDetails.answers);
     questionsArr = questionsArr.map((q) => {
